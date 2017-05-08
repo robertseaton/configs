@@ -1,0 +1,9 @@
+/.xmonad/xmonad.o
+/.xmonad/xmonad.hi
+/.xmonad/xmonad
+/.xinitrc~
+/.config/fish/fishd.jupiter
+.ssh/
+.local/
+.cache/
+/.Xauthority
