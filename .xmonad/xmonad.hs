@@ -5,9 +5,10 @@ import XMonad.Actions.WindowBringer
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Fullscreen
-import XMonad.Hooks.EwmhDesktops
+import XMonad.Layout.Tabbed
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
@@ -64,13 +65,13 @@ myLogHook h = dynamicLogWithPP $ defaultPP
     where
         noScratchpad ws = if ws == "NSP" then "" else ws
 
-myTerminal = "xfce4-terminal"
+myTerminal = "st"
 myXMonadBar = "dzen2 -dock -xs 1 -fn Inconsolata-10 -ta l -bg '" ++ backgroundColor ++ "' -w '550' -h '24'"
 --topBar = "ruby ~/sh/make-status.rb | "
 topBar = "ruby ~/sh/tee.rb ~/stats/xmonad"
 bottomBar = "lemonbar -f Inconsolata-10 -b -g 1920x24"
 
-layout' = fullscreenFull tall' ||| Full
+layout' = fullscreenFull tall' ||| simpleTabbedLeft ||| Full 
   where
     tall' = Tall nmaster delta ratio
     nmaster = 1
