@@ -68,7 +68,7 @@ myLogHook h = dynamicLogWithPP $ defaultPP
 myTerminal = "st"
 myXMonadBar = "dzen2 -dock -xs 1 -fn Inconsolata-10 -ta l -bg '" ++ backgroundColor ++ "' -w '550' -h '24'"
 --topBar = "ruby ~/sh/make-status.rb | "
-topBar = "ruby ~/sh/tee.rb ~/stats/xmonad"
+--topBar = "ruby ~/sh/tee.rb ~/stats/xmonad"
 bottomBar = "lemonbar -f Inconsolata-10 -b -g 1920x24"
 
 layout' = fullscreenFull tall' ||| simpleTabbedLeft ||| Full 
@@ -83,8 +83,8 @@ wrap' y x = y ++ x ++ y
 
 wrapq = wrap' "\""
 
-dmenu' = "dmenu_run -h 24 -fn Inconsolata-10 -nb '" ++ backgroundColor ++ "' -nf '" ++ textColor ++ "' -sb '" ++ color3 ++ "' -sf '" ++ textColor ++ "'"
-dmenu_args = ["-h", "24", "-fn", "Inconsolata-10", "-nb", backgroundColor, "-nf", textColor, "-sb", color3, "-sf", textColor]
+dmenu' = "dmenu_run -fn Inconsolata-10 -nb '" ++ backgroundColor ++ "' -nf '" ++ textColor ++ "' -sb '" ++ color3 ++ "' -sf '" ++ textColor ++ "'"
+dmenu_args = ["-fn", "Inconsolata-10", "-nb", backgroundColor, "-nf", textColor, "-sb", color3, "-sf", textColor]
 dmenu_cmd = "fish -c " ++ wrapq dmenu'
 workspaceNames = ["misc",  "planning", "cws", "meditation", "mpv", "game", "rt", "bsd", "creep", "music", "de", "emacs", "", "blog", "chat"]
 workspaceKeys = ["1", "2", "3", "4", "q", "w", "e", "r", "a", "s", "d", "f", "z", "x", "c"]
@@ -92,7 +92,7 @@ workspaces' = zipWith (++) (map (\x -> x ++ ":") workspaceKeys) workspaceNames
 
 main = do
 --  dzenRightBar <- spawnPipe topBar
-  dzenLeftBar <- spawnPipe topBar
+--  dzenLeftBar <- spawnPipe topBar
   xmonad $ ewmh defaultConfig
             { terminal = myTerminal
             , focusFollowsMouse = True
@@ -103,7 +103,7 @@ main = do
             , borderWidth = 1
             , normalBorderColor = backgroundColor
             , focusedBorderColor = color3
-            , logHook = myLogHook dzenLeftBar
+--            , logHook = myLogHook dzenLeftBar
             , handleEventHook = docksEventHook <+> handleEventHook  defaultConfig
             }
             `additionalMouseBindings`
