@@ -112,14 +112,14 @@ main = do
             ([ ("C-d q", spawn "xmonad --recompile && xmonad --restart")
 	    , ("C-d s", spawn dmenu_cmd)
             , ("C-d f", windows W.focusDown)                            -- Select next window.
-            , ("M4-k", windows W.focusDown)                            -- ^
+            , ("M1-k", windows W.focusDown)                            -- ^
             , ("C-d <Right>", windows W.focusDown)                      -- ^
             , ("C-d d", windows W.focusUp)                              -- Select the previous window.
-            , ("M4-j", windows W.focusUp)                              -- ^
+            , ("M1-j", windows W.focusUp)                              -- ^
             , ("C-d <Left>", windows W.focusUp)                         -- ^
             , ("C-d <Return>", windows W.swapMaster)                    -- Swap master window and focused window.
-            , ("M4-h", sendMessage Shrink)                               -- Shrink the master area.
-            , ("M4-l", sendMessage Expand)                               -- Grow the master area.
+            , ("M1-h", sendMessage Shrink)                               -- Shrink the master area.
+            , ("M1-l", sendMessage Expand)                               -- Grow the master area.
             , ("C-d x", kill)                                           -- Kill the selected window.
             , ("C-d c", spawn myTerminal)                                 -- Start terminal.
             , ("C-d t", spawn "eshell")
@@ -139,14 +139,14 @@ main = do
             , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +5%; pamixer --get-volume > ~/stats/vol")
             , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -5%; pamixer --get-volume > ~/stats/vol")
             , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-            , ("M4-<Space>", sendMessage NextLayout)
+            , ("M1-<Space>", sendMessage NextLayout)
             , ("C-d ,", spawn "playerctl previous")
             , ("C-d .", spawn "playerctl next")
             , ("C-d /", spawn "playerctl play-pause")
-            , ("M4-<Tab>", cycleRecentWS [xK_Super_L] xK_Tab xK_Tab)
+            , ("M1-<Tab>", cycleRecentWS [xK_Super_L] xK_Tab xK_Tab)
             ]
             ++
-            [ (otherModMasks ++ "M4-" ++ key, action tag)
+            [ (otherModMasks ++ "M1-" ++ key, action tag)
             | (tag, key)  <- zip workspaces' workspaceKeys
             , (otherModMasks, action) <- [ ("", windows . W.greedyView) -- or W.view
                                          , ("S-", windows . W.shift)]
