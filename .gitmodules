@@ -4,3 +4,6 @@
 [submodule "src/contrib/siji"]
 	path = src/contrib/siji
 	url = https://github.com/stark/siji
+[submodule "src/contrib/polybar"]
+	path = src/contrib/polybar
+	url = https://github.com/robertseaton/polybar
