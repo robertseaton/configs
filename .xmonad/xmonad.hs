@@ -93,6 +93,7 @@ workspaces' = zipWith (++) (map (\x -> x ++ ":") workspaceKeys) workspaceNames
 main = do
 --  dzenRightBar <- spawnPipe topBar
 --  dzenLeftBar <- spawnPipe topBar
+  xmproc <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
   xmonad $ ewmh defaultConfig
             { terminal = myTerminal
             , focusFollowsMouse = True
@@ -103,7 +104,10 @@ main = do
             , borderWidth = 1
             , normalBorderColor = backgroundColor
             , focusedBorderColor = color3
---            , logHook = myLogHook dzenLeftBar
+            , logHook = dynamicLogWithPP $ xmobarPP
+                       { ppOutput = hPutStrLn xmproc
+                       , ppTitle = xmobarColor "green" "" . shorten 50
+                       }
             , handleEventHook = docksEventHook <+> handleEventHook  defaultConfig
             }
             `additionalMouseBindings`
@@ -111,7 +115,7 @@ main = do
             , ((0, 9), \w -> nextWS ) -- Use mouse button to move to the next workspace.
             ]
             `additionalKeysP`
-            ([ ("C-d q", spawn "killall conky lemonbar && xmonad --recompile && xmonad --restart")
+            ([ ("C-d q", spawn "xmonad --recompile && xmonad --restart")
 	    , ("C-d s", spawn dmenu_cmd)
             , ("C-d f", windows W.focusDown)                            -- Select next window.
             , ("M4-k", windows W.focusDown)                            -- ^
