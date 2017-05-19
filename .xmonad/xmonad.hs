@@ -46,7 +46,6 @@ color3 = "#AB4642"
 lemonColor :: String -> String -> String -> String
 lemonColor fgcolor bgcolor str = "%{F" ++ fgcolor ++ "}" ++ str -- ++ "%{B" ++ bgcolor ++ "}"
 
-
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ defaultPP
     {
@@ -91,7 +90,7 @@ main = do
   xmonad $ ewmh defaultConfig
             { terminal = myTerminal
             , focusFollowsMouse = True
-            , modMask = mod4Mask
+            , modMask = mod1Mask
             , layoutHook = smartBorders $ avoidStruts $ smartSpacing 5 $ layout'
             , manageHook = myManageHook <+> manageHook defaultConfig 
             , workspaces = workspaces'
