@@ -17,7 +17,6 @@ import XMonad.Util.Run
 import XMonad.Util.Scratchpad
 import XMonad.Util.WorkspaceCompare
 
---import System.IO
 import System.IO
 
 import qualified XMonad.StackSet as W
@@ -67,9 +66,6 @@ myLogHook h = dynamicLogWithPP $ defaultPP
 
 myTerminal = "st"
 myXMonadBar = "dzen2 -dock -xs 1 -fn Inconsolata-10 -ta l -bg '" ++ backgroundColor ++ "' -w '550' -h '24'"
---topBar = "ruby ~/sh/make-status.rb | "
---topBar = "ruby ~/sh/tee.rb ~/stats/xmonad"
-bottomBar = "lemonbar -f Inconsolata-10 -b -g 1920x24"
 
 layout' = fullscreenFull tall' ||| simpleTabbedLeft ||| Full 
   where
@@ -91,8 +87,6 @@ workspaceKeys = ["1", "2", "3", "4", "q", "w", "e", "r", "a", "s", "d", "f", "z"
 workspaces' = zipWith (++) (map (\x -> x ++ ":") workspaceKeys) workspaceNames
 
 main = do
---  dzenRightBar <- spawnPipe topBar
---  dzenLeftBar <- spawnPipe topBar
   xmproc <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
   xmonad $ ewmh defaultConfig
             { terminal = myTerminal
