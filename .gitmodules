@@ -1,3 +1,6 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = https://github.com/robertseaton/.emacs.d
+[submodule "src/contrib/siji"]
+	path = src/contrib/siji
+	url = https://github.com/stark/siji
