@@ -47,7 +47,6 @@ color3 = "#AB4642"
 lemonColor :: String -> String -> String -> String
 lemonColor fgcolor bgcolor str = "%{F" ++ fgcolor ++ "}" ++ str -- ++ "%{B" ++ bgcolor ++ "}"
 
-
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ defaultPP
     {
@@ -91,19 +90,16 @@ workspaceKeys = ["1", "2", "3", "4", "q", "w", "e", "r", "a", "s", "d", "f", "z"
 workspaces' = zipWith (++) (map (\x -> x ++ ":") workspaceKeys) workspaceNames
 
 main = do
---  dzenRightBar <- spawnPipe topBar
---  dzenLeftBar <- spawnPipe topBar
   xmonad $ ewmh defaultConfig
             { terminal = myTerminal
             , focusFollowsMouse = True
-            , modMask = mod4Mask
+            , modMask = mod1Mask
             , layoutHook = smartBorders $ avoidStruts $ smartSpacing 5 $ layout'
             , manageHook = myManageHook <+> manageHook defaultConfig 
             , workspaces = workspaces'
             , borderWidth = 1
             , normalBorderColor = backgroundColor
             , focusedBorderColor = color3
---            , logHook = myLogHook dzenLeftBar
             , handleEventHook = docksEventHook <+> handleEventHook  defaultConfig
             }
             `additionalMouseBindings`
@@ -148,7 +144,7 @@ main = do
             , ("M4-<Tab>", cycleRecentWS [xK_Super_L] xK_Tab xK_Tab)
             ]
             ++
-            [ (otherModMasks ++ "M4-" ++ key, action tag)
+            [ (otherModMasks ++ "M1-" ++ key, action tag)
             | (tag, key)  <- zip workspaces' workspaceKeys
             , (otherModMasks, action) <- [ ("", windows . W.greedyView) -- or W.view
                                          , ("S-", windows . W.shift)]
