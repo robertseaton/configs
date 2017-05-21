@@ -99,7 +99,10 @@ main = do
             , focusedBorderColor = color3
             , logHook = dynamicLogWithPP $ xmobarPP
                        { ppOutput = hPutStrLn xmproc
-                       , ppTitle = xmobarColor "green" "" . shorten 50
+                       , ppTitle = xmobarColor "#b0b0b0" "" . shorten 50
+                       , ppCurrent = xmobarColor "#f4bf75" "" . shorten 50
+                       , ppVisible = xmobarColor "#d28445" "" . shorten 50
+                       , ppHidden = xmobarColor "#b0b0b0" "" . shorten 50
                        }
             , handleEventHook = docksEventHook <+> handleEventHook  defaultConfig
             }
