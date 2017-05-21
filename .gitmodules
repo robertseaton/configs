@@ -7,3 +7,6 @@
 [submodule "src/contrib/polybar"]
 	path = src/contrib/polybar
 	url = https://github.com/robertseaton/polybar
+[submodule "src/contrib/st"]
+	path = src/contrib/st
+	url = git@github.com:robertseaton/st.git
