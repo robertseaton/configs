@@ -64,7 +64,6 @@ myLogHook h = dynamicLogWithPP $ defaultPP
         noScratchpad ws = if ws == "NSP" then "" else ws
 
 myTerminal = "st"
-myXMonadBar = "dzen2 -dock -xs 1 -fn Inconsolata-10 -ta l -bg '" ++ backgroundColor ++ "' -w '550' -h '24'"
 
 layout' = fullscreenFull tall' ||| simpleTabbedLeft ||| Full 
   where

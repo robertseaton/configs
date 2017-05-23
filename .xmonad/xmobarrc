@@ -1,5 +1,5 @@
 Config {
-font = "xft:Inconsolata:size=11,Siji:size=11",
+font = "xft:Tamsyn:size=11,Siji:size=11",
        , bgColor =      "#202020"
        , fgColor =      "#e0e0e0"
        , position =     Top
