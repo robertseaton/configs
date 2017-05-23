@@ -1,1 +1,1 @@
-set -gx PATH ~/.xmonad/ ~/.cabal/bin $PATH
+set -gx PATH ~/bin ~/.xmonad/ ~/.cabal/bin $PATH
