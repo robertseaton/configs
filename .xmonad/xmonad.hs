@@ -77,8 +77,8 @@ wrap' y x = y ++ x ++ y
 
 wrapq = wrap' "\""
 
-dmenu' = "dmenu_run -fn Inconsolata-10 -nb '" ++ backgroundColor ++ "' -nf '" ++ textColor ++ "' -sb '" ++ color3 ++ "' -sf '" ++ textColor ++ "'"
-dmenu_args = ["-fn", "Inconsolata-10", "-nb", backgroundColor, "-nf", textColor, "-sb", color3, "-sf", textColor]
+dmenu' = "dmenu_run -fn Tamsyn-11 -nb '" ++ backgroundColor ++ "' -nf '" ++ textColor ++ "' -sb '" ++ color3 ++ "' -sf '" ++ textColor ++ "'"
+dmenu_args = ["-fn", "Tamsyn-11", "-nb", backgroundColor, "-nf", textColor, "-sb", color3, "-sf", textColor]
 dmenu_cmd = "fish -c " ++ wrapq dmenu'
 workspaceNames = ["misc",  "planning", "cws", "meditation", "mpv", "game", "rt", "bsd", "creep", "music", "de", "emacs", "", "blog", "chat"]
 workspaceKeys = ["1", "2", "3", "4", "q", "w", "e", "r", "a", "s", "d", "f", "z", "x", "c"]
