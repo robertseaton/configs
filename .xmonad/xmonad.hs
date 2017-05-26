@@ -126,7 +126,7 @@ main = do
             , ("C-d t", spawn "eshell")
             , ("C-d <Space>", sendMessage NextLayout)                   -- Switch layout.
             , ("C-d n", windows W.swapDown)                             -- Swap focused window with next window.
-            , ("C-d p", windows W.swapUp)                               -- Swap focused window with the previous window.
+            , ("C-d p", spawn "passmenu")                               -- Password manager.
             , ("C-d +", sendMessage (IncMasterN 1))                     -- Increment the number of windows in the master area.
             , ("C-d -", sendMessage (IncMasterN (-1)))                  -- Decrement the number of windows in the master area.
             , ("C-d 4", spawn "gnome-screenshot --area")                -- OS X style screenshotting.
