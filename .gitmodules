@@ -10,3 +10,9 @@
 [submodule "src/contrib/st"]
 	path = src/contrib/st
 	url = git@github.com:robertseaton/st.git
+[submodule "src/surf"]
+	path = src/surf
+	url = http://git.suckless.org/surf
+[submodule "src/contrib/surf"]
+	path = src/contrib/surf
+	url = git@github.com:robertseaton/surf.git
