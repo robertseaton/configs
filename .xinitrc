@@ -4,6 +4,7 @@ dhcpcd &
 xmodmap .xmodmap
 xset +fp /home/rps/.fonts
 xset fp rehash
+emacs --daemon
 exec .xmonad/xmonad
 
 
