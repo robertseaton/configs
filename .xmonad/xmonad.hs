@@ -65,7 +65,12 @@ myLogHook h = dynamicLogWithPP $ defaultPP
 
 myTerminal = "st"
 
-layout' = fullscreenFull tall' ||| simpleTabbedLeft ||| Full 
+tabConfig' = def { decoWidth = 200
+                 , decoHeight = 200
+                 , fontName = "Tamsyn-11"
+}
+
+layout' = fullscreenFull tall' ||| tabbedLeft shrinkText' tabConfig' ||| Full 
   where
     tall' = Tall nmaster delta ratio
     nmaster = 1
@@ -110,7 +115,7 @@ main = do
             , ((0, 9), \w -> nextWS ) -- Use mouse button to move to the next workspace.
             ]
             `additionalKeysP`
-            ([ ("C-d q", spawn "xmonad --recompile && xmonad --restart")
+            ([ ("C-d q", spawn "surf-wrapper")
 	    , ("C-d s", spawn dmenu_cmd)
             , ("C-d f", windows W.focusDown)                            -- Select next window.
             , ("M1-k", windows W.focusDown)                            -- ^
@@ -127,7 +132,7 @@ main = do
             , ("C-d <Space>", sendMessage NextLayout)                   -- Switch layout.
             , ("C-d n", windows W.swapDown)                             -- Swap focused window with next window.
             , ("C-d p", spawn "passmenu")                               -- Password manager.
-            , ("C-d +", sendMessage (IncMasterN 1))                     -- Increment the number of windows in the master area.
+            , ("C-d =", sendMessage (IncMasterN 1))                     -- Increment the number of windows in the master area.
             , ("C-d -", sendMessage (IncMasterN (-1)))                  -- Decrement the number of windows in the master area.
             , ("C-d 4", spawn "gnome-screenshot --area")                -- OS X style screenshotting.
             , ("C-d t", withFocused $ windows . W.sink)                 -- Force app back into tiling.
