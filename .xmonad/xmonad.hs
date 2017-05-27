@@ -57,7 +57,7 @@ myLogHook h = dynamicLogWithPP $ defaultPP
       , ppWsSep             =   ""
       , ppSep               =   " | "
       , ppLayout            =   lemonColor color3 backgroundColor
-      , ppTitle             =   (" " ++) . lemonColor textColor backgroundColor . shorten 30 . dzenEscape
+      , ppTitle             =   (" " ++) . lemonColor textColor backgroundColor . shorten 100 . dzenEscape
       , ppOutput            =   System.IO.hPutStrLn h
     }
     where
@@ -70,7 +70,7 @@ tabConfig' = def { decoWidth = 200
                  , fontName = "Tamsyn-11"
 }
 
-layout' = fullscreenFull tall' ||| tabbedLeft shrinkText' tabConfig' ||| Full 
+layout' = fullscreenFull tall' ||| tabbedLeft shrinkText tabConfig' ||| Full 
   where
     tall' = Tall nmaster delta ratio
     nmaster = 1
