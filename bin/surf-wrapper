@@ -5,7 +5,7 @@ HIST_OR_CMD=$(cat ~/.surf/history | dmenu)
 case $HIST_OR_CMD in
     "s "* )
 	URL=$(echo $HIST_OR_CMD | cut -f 1 -d ' ' --complement)
-	surf "https://www.startpage.com/do/search?q=$URL";;
-    *) surf $HIST_OR_CMD
+	cd ~/downloads; surf "https://www.startpage.com/do/search?q=$URL";;
+    *) cd ~/downloads; surf $HIST_OR_CMD
 esac
 
