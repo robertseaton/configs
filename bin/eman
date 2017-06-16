@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+
+fish -c "emacsclient -ct -e '(woman \"$1\")'"
