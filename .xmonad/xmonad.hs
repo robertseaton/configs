@@ -57,7 +57,7 @@ myLogHook h = dynamicLogWithPP $ defaultPP
       , ppWsSep             =   ""
       , ppSep               =   " | "
       , ppLayout            =   lemonColor color3 backgroundColor
-      , ppTitle             =   (" " ++) . lemonColor textColor backgroundColor . shorten 100 . dzenEscape
+      , ppTitle             =   (" " ++) . lemonColor textColor backgroundColor . shorten 1000 . dzenEscape
       , ppOutput            =   System.IO.hPutStrLn h
     }
     where
@@ -70,7 +70,7 @@ tabConfig' = def { decoWidth = 200
                  , fontName = "Tamsyn-11"
 }
 
-layout' = fullscreenFull tall' ||| tabbedLeft shrinkText tabConfig' ||| Full 
+layout' = fullscreenFull tall' ||| Full 
   where
     tall' = Tall nmaster delta ratio
     nmaster = 1
@@ -107,6 +107,7 @@ main = do
                        , ppCurrent = xmobarColor "#f4bf75" "" . shorten 50
                        , ppVisible = xmobarColor "#d28445" "" . shorten 50
                        , ppHidden = xmobarColor "#b0b0b0" "" . shorten 50
+                       , ppHiddenNoWindows = xmobarColor "#b0b0b0" "" . shorten 50
                        }
             , handleEventHook = docksEventHook <+> handleEventHook  defaultConfig
             }
@@ -131,7 +132,7 @@ main = do
             , ("C-d t", spawn "eshell")
             , ("C-d <Space>", sendMessage NextLayout)                   -- Switch layout.
             , ("C-d n", windows W.swapDown)                             -- Swap focused window with next window.
-            , ("C-d p", spawn "passmenu")                               -- Password manager.
+            , ("C-d p", spawn "gopass completion dmenu")                -- Password manager.
             , ("C-d =", sendMessage (IncMasterN 1))                     -- Increment the number of windows in the master area.
             , ("C-d -", sendMessage (IncMasterN (-1)))                  -- Decrement the number of windows in the master area.
             , ("C-d 4", spawn "gnome-screenshot --area")                -- OS X style screenshotting.
