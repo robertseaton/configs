@@ -1,0 +1,20 @@
+[global]
+font = Tamsyn 11
+format = "<span font='11' weight='bold' foreground='#ffffff'>%s</span>\n\n<span foreground='#e0e0e0'>%b</span>"
+alignment = left
+word_wrap = yes
+geometry = "200x5-15+20"
+padding = 8
+horizontal_padding = 8
+
+[frame]
+width = 3
+color = "#aaaaaa"
+
+[urgency_low]
+background = "#202020"
+timeout = 5
+
+[urgency_normal]
+background = "#202020"
+timeout = 5
